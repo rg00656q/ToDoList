@@ -18,6 +18,7 @@ class Todo
     #[ORM\Column(length: 255)]
     private ?string $body = null;
 
+    // Utiliser Entity pour lister les niveaux de priorités
     #[Assert\GreaterThan(0)]
     #[Assert\LessThan(4)]
     #[ORM\Column]
