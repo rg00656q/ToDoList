@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ToDoController extends AbstractController{
 
+    // Affichage de notre liste de Todos
     public function index(TodoRepository $todolist){
         // List fetching
         $todos = $todolist->findAll();
@@ -22,6 +23,7 @@ class ToDoController extends AbstractController{
         ]);
     }
 
+    // Ajout d'un Todo
     public function create(Request $request, ManagerRegistry $doctrine){
         // Initializing
         $em = $doctrine->getManager();
@@ -50,6 +52,7 @@ class ToDoController extends AbstractController{
         ]);
     }
 
+    // Suppression d'un Todo
     public function remove(Todo $todo, ManagerRegistry $doctrine){
         // Initializing
         $em = $doctrine->getManager();
