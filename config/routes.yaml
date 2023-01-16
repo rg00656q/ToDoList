@@ -1,3 +1,21 @@
 controllers:
-    resource: ../src/Controller/
-    type: attribute
+  resource: ../src/Controller/
+  type: attribute
+
+app-welcome:
+  path: /welcome
+  controller: App\Controller\WelcomeController::index
+  methods: GET|HEAD
+
+todolist.index:
+  path: /todolist
+  controller: App\Controller\ToDoController::index
+  methods: GET|HEAD
+
+todolist.create:
+  path: /todolist/create
+  controller: App\Controller\ToDoController::create
+
+todolist.complete:
+  path: /todolist/remove/{todo}
+  controller: App\Controller\ToDoController::remove

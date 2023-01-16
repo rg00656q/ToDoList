@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+	<div class="alert alert-success">
+		{{ message }}
+	</div>
+{% endfor %}
+<button class="btn btn-primary float-end mb-2">
+	<a href="{{ path('todolist.create') }}" style="color: black">Create a new Todo</a>
+</button>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<td>id</td>
+			<td>Body</td>
+			<td>Priority</td>
+			<td>Done</td>
+		</tr>
+	</thead>
+	<tbody>
+		{% for todo in todos %}
+			<tr>
+				<td>{{todo.id}}</td>
+				<td>{{todo.body}}</td>
+				<td>
+					{% if todo.priority == 1 %}High
+					{% endif %}
+					{% if todo.priority == 2 %}Medium
+					{% endif %}
+					{% if todo.priority == 3 %}Low
+					{% endif %}
+				</td>
+				<td>
+					{% if todo.iscompleted == false %}
+						<a href="{{ path('todolist.complete', {todo: todo.id})}}">Complete Now</a>
+					{% endif %}
+				</td>
+			</tr>
+		</td>
+	</tbody>
+</tr>{% endfor %}</tbody></table>{% endblock %}
